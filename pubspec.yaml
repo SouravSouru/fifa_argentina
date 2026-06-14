@@ -1,0 +1,34 @@
+name: fifa_2026
+description: "Argentina National Team — Ultra-Premium Football Experience"
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  google_fonts: ^6.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/player_messi.png
+    - assets/images/player_dimaria.png
+    - assets/images/player_lautaro.png
+    - assets/images/player_emiliano.png
+    - assets/images/player_molina.png
+    - assets/images/player_paredes.png
+    - assets/images/player_macallister.png
+    - assets/images/player_enzo.png
+    - assets/images/player_pezzella.png
+    - assets/images/player_romero.png
+    - assets/images/player_tagliafico.png
