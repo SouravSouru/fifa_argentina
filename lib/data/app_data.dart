@@ -617,13 +617,13 @@ class AppData {
 
     // 10 — Forward (Gonzalez)
     PlayerModel(
-      id: 'sf_11',
-      name: 'Thiago Gonzalez',
-      shortName: 'Gonzalez',
-      number: '11',
+      id: 'sf_15',
+      name: 'Nicolás González',
+      shortName: 'N. González',
+      number: '15',
       position: 'Forward',
       positionCode: 'LW',
-      club: 'Villarreal',
+      club: 'Juventus',
       nationality: 'Argentina',
       age: 22,
       imageUrl: 'assets/images/player_gonzalez.png',

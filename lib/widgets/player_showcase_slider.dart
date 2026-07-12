@@ -469,14 +469,37 @@ class _InfoPanel extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 5),
-            Text(
-              player.club,
-              style: GoogleFonts.inter(
-                fontSize: 10,
-                fontWeight: FontWeight.w500,
-                color: AppColors.silver.withOpacity(0.55),
-                letterSpacing: 0.6,
-              ),
+            Row(
+              children: [
+                Text(
+                  player.positionCode,
+                  style: GoogleFonts.inter(
+                    fontSize: 10,
+                    fontWeight: FontWeight.w700,
+                    color: AppColors.gold,
+                    letterSpacing: 0.8,
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Container(
+                  width: 4,
+                  height: 4,
+                  decoration: BoxDecoration(
+                    color: AppColors.silver.withOpacity(0.4),
+                    shape: BoxShape.circle,
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Text(
+                  player.club,
+                  style: GoogleFonts.inter(
+                    fontSize: 10,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.silver.withOpacity(0.55),
+                    letterSpacing: 0.6,
+                  ),
+                ),
+              ],
             ),
           ],
         ),
