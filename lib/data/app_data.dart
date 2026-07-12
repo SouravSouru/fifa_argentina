@@ -335,8 +335,6 @@ class AppData {
 
   // ── Semi-Final XI — exact order required by the 3D slider ──────────────────
   // Ordered: GK · RB · CB · CB · LB · CM · CDM · CM · ST · FW · RW
-  // Note: Senesi → player_pezzella.png fallback, Álvarez → player_lautaro.png,
-  //       Gonzalez → player_dimaria.png (until dedicated assets are added).
   static const List<PlayerModel> semiFinalSquad = [
     // 1 — Goalkeeper
     PlayerModel(
@@ -431,7 +429,7 @@ class AppData {
       rating: 8.0,
     ),
 
-    // 4 — Centre Back (Senesi — pezzella.png as fallback)
+    // 4 — Centre Back
     PlayerModel(
       id: 'sf_25',
       name: 'Marcos Senesi',
@@ -442,7 +440,7 @@ class AppData {
       club: 'Bournemouth',
       nationality: 'Argentina',
       age: 27,
-      imageUrl: 'assets/images/player_pezzella.png',
+      imageUrl: 'assets/images/player_senesi.png',
       stats: {
         'pace': 72,
         'shooting': 55,
@@ -585,7 +583,7 @@ class AppData {
       rating: 8.4,
     ),
 
-    // 9 — Striker (Julián Álvarez — lautaro.png as fallback)
+    // 9 — Striker (Julián Álvarez)
     PlayerModel(
       id: 'sf_9',
       name: 'Julián Álvarez',
@@ -596,7 +594,7 @@ class AppData {
       club: 'Atlético Madrid',
       nationality: 'Argentina',
       age: 25,
-      imageUrl: 'assets/images/player_lautaro.png',
+      imageUrl: 'assets/images/player_alvarez.png',
       stats: {
         'pace': 86,
         'shooting': 87,
@@ -617,7 +615,7 @@ class AppData {
       isStarPlayer: true,
     ),
 
-    // 10 — Forward (Thiago Gonzalez — dimaria.png as fallback)
+    // 10 — Forward (Valentín Carboni)
     PlayerModel(
       id: 'sf_17',
       name: 'Valentín Carboni',
@@ -628,7 +626,7 @@ class AppData {
       club: 'Inter Milan',
       nationality: 'Argentina',
       age: 19,
-      imageUrl: 'assets/images/player_dimaria.png',
+      imageUrl: 'assets/images/player_carboni.png',
       stats: {
         'pace': 88,
         'shooting': 80,

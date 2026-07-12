@@ -164,6 +164,9 @@ class _AppShellState extends State<AppShell> with TickerProviderStateMixin {
 
           // Screen 5 - Match Center
           const MatchCenterScreen(),
+
+          // Screen 6 - Semi-Final Intro (embedded so bottom nav stays visible)
+          const SemiFinalIntroScreen(),
         ],
       ),
       bottomNavigationBar: SlideTransition(
@@ -178,7 +181,7 @@ class _AppShellState extends State<AppShell> with TickerProviderStateMixin {
 
   Widget _buildBottomNav() {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 0, 20, 24),
+      padding: const EdgeInsets.fromLTRB(12, 0, 12, 24),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(28),
         child: BackdropFilter(
@@ -240,38 +243,14 @@ class _AppShellState extends State<AppShell> with TickerProviderStateMixin {
                   hasLive: true,
                   onTap: () => _navigateTo(4),
                 ),
-                // Semi-Final tab — pushes as a modal route (not in PageView)
                 _NavItem(
                   icon: Icons.emoji_events_rounded,
                   label: 'Semi-Final',
                   isActive: _currentTab == 5,
                   hasLive: false,
-                  onTap: () {
-                    HapticFeedback.selectionClick();
-                    Navigator.of(context).push(
-                      PageRouteBuilder<void>(
-                        pageBuilder: (ctx, anim, sec) =>
-                            const SemiFinalIntroScreen(),
-                        transitionsBuilder: (ctx, anim, sec, child) {
-                          final curved = CurvedAnimation(
-                            parent: anim,
-                            curve: Curves.easeInOutCubic,
-                          );
-                          return FadeTransition(
-                            opacity: curved,
-                            child: ScaleTransition(
-                              scale: Tween<double>(begin: 0.96, end: 1.0)
-                                  .animate(curved),
-                              child: child,
-                            ),
-                          );
-                        },
-                        transitionDuration: const Duration(milliseconds: 500),
-                      ),
-                    );
-                  },
+                  onTap: () => _navigateTo(5),
                 ),
-              ],
+              ].map((item) => Expanded(child: item)).toList(),
             ),
           ),
         ),
@@ -338,14 +317,14 @@ class _NavItemState extends State<_NavItem>
           child: child,
         ),
         child: SizedBox(
-          width: 64,
+          // No fixed width — parent Expanded distributes space evenly
           height: 68,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               AnimatedContainer(
                 duration: const Duration(milliseconds: 250),
-                padding: const EdgeInsets.all(8),
+                padding: const EdgeInsets.all(6),
                 decoration: BoxDecoration(
                   color: widget.isActive
                       ? AppColors.skyBlue.withOpacity(0.2)

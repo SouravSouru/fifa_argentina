@@ -13,7 +13,13 @@ import '../core/app_colors.dart';
 import 'player_3d_slider_screen.dart';
 
 class SemiFinalIntroScreen extends StatefulWidget {
-  const SemiFinalIntroScreen({super.key});
+  /// When [autoNavigate] is true the screen will automatically push
+  /// [Player3dSliderScreen] after 5 seconds. Set to false (the default)
+  /// when the screen is embedded inside a PageView so the auto-timer
+  /// doesn't fire while the user is on a different tab.
+  final bool autoNavigate;
+
+  const SemiFinalIntroScreen({super.key, this.autoNavigate = false});
 
   @override
   State<SemiFinalIntroScreen> createState() => _SemiFinalIntroScreenState();
@@ -144,10 +150,13 @@ class _SemiFinalIntroScreenState extends State<SemiFinalIntroScreen>
     // ── Start ────────────────────────────────────────────────────────────────
     _sequenceCtrl.forward();
 
-    // Auto-navigate after 5 s (ample time to enjoy the intro)
-    Future.delayed(const Duration(milliseconds: 5000), () {
-      if (mounted && !_navigated) _navigateToSlider();
-    });
+    // Auto-navigate after 5 s only when explicitly enabled.
+    // When embedded in a PageView (the default), the user taps the CTA instead.
+    if (widget.autoNavigate) {
+      Future.delayed(const Duration(milliseconds: 5000), () {
+        if (mounted && !_navigated) _navigateToSlider();
+      });
+    }
   }
 
   @override
@@ -213,7 +222,6 @@ class _SemiFinalIntroScreenState extends State<SemiFinalIntroScreen>
             return Stack(
               children: [
                 _BackgroundLayer(opacity: _bgOpacity.value, size: size),
-
                 Opacity(
                   opacity: (_sequenceCtrl.value * 4.0).clamp(0.0, 1.0),
                   child: CustomPaint(
