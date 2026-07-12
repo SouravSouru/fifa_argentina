@@ -11,6 +11,7 @@ import 'screens/lineup_screen.dart';
 import 'screens/player_showcase_screen.dart';
 import 'screens/squad_carousel_screen.dart';
 import 'screens/match_center_screen.dart';
+import 'screens/semi_final_intro_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -238,6 +239,37 @@ class _AppShellState extends State<AppShell> with TickerProviderStateMixin {
                   isActive: _currentTab == 4,
                   hasLive: true,
                   onTap: () => _navigateTo(4),
+                ),
+                // Semi-Final tab — pushes as a modal route (not in PageView)
+                _NavItem(
+                  icon: Icons.emoji_events_rounded,
+                  label: 'Semi-Final',
+                  isActive: _currentTab == 5,
+                  hasLive: false,
+                  onTap: () {
+                    HapticFeedback.selectionClick();
+                    Navigator.of(context).push(
+                      PageRouteBuilder<void>(
+                        pageBuilder: (ctx, anim, sec) =>
+                            const SemiFinalIntroScreen(),
+                        transitionsBuilder: (ctx, anim, sec, child) {
+                          final curved = CurvedAnimation(
+                            parent: anim,
+                            curve: Curves.easeInOutCubic,
+                          );
+                          return FadeTransition(
+                            opacity: curved,
+                            child: ScaleTransition(
+                              scale: Tween<double>(begin: 0.96, end: 1.0)
+                                  .animate(curved),
+                              child: child,
+                            ),
+                          );
+                        },
+                        transitionDuration: const Duration(milliseconds: 500),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),
